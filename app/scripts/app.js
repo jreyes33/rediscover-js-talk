@@ -1,6 +1,8 @@
 /*global define */
-define([], function () {
+define(['jquery'], function($) {
   'use strict';
 
-  return '\'Allo \'Allo!';
+  $(function() {
+    $.deck('.slide');
+  });
 });
