@@ -1,7 +1,36 @@
-// body {
-//   background: #fafafa;
+$sans-serif-family: "Source Sans Pro", arial, verdana, sans-serif;
+$monospace-family: "Ubuntu Mono", "Courier New", monospace, sans-serif;
 
-//   a {
-//     cursor: wait;
-//   }
-// }
+.deck-container {
+  font-family: $sans-serif-family;
+  font-size: 1.6em;
+}
+
+.deck-container .slide {
+  pre, code, kbd, samp, .CodeMirror, .deck-codemirror-result {
+    font-family: $monospace-family;
+    font-size: 0.8em;
+  }
+
+  .code-wrapper {
+    margin-bottom: 0.5em;
+
+    label {
+      font-weight: bold;
+    }
+  }
+
+  .CodeMirror {
+    .button {
+      font-size: 14px;
+    }
+  }
+
+  .CodeMirror-scroll {
+    width: inherit;
+    margin-bottom: -30px;
+    margin-right: -30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+  }
+}

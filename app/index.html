@@ -10,15 +10,18 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=1024, user-scalable=no">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Ubuntu+Mono:400,700">
   <link rel="stylesheet" href="styles/main.css">
   <!-- build:js scripts/vendor/modernizr.js -->
   <script src="bower_components/modernizr/modernizr.js"></script>
   <!-- endbuild -->
 </head>
 <body class="deck-container">
+
   <section class="slide" id="cover">
     <h1>Relearning JavaScript</h1>
   </section>
+
   <section class="slide" id="origin">
     <h2>Brief History</h2>
     <h3>Origin</h3>
@@ -28,6 +31,7 @@
       <li class="slide">in just 10 days</li>
     </ul>
   </section>
+
   <section class="slide" id="names">
     <h2>Brief History</h2>
     <h3>Names</h3>
@@ -39,19 +43,93 @@
       <li class="slide">ECMAScript (1997, standard)</li>
     </ul>
   </section>
+
+  <section class="slide" id="today">
+    <h2>Today</h2>
+    <h3>Versions</h3>
+    <ul>
+      <li class="slide">JavaScript 1.8.* (<a href="http://es5.github.io/">ECMAScript 5.1</a>)</li>
+      <li class="slide">JavaScript 2.0 (<a href="http://wiki.ecmascript.org/doku.php?id=harmony:harmony">ES6 Harmony</a>) in development</li>
+    </ul>
+    <h3>Everywhere</h3>
+    <ul>
+      <li class="slide">Every modern browser</li>
+      <li class="slide">Server side (most notably <a href="http://nodejs.org/">Node.js</a>)</li>
+      <li class="slide">Desktop (<a href="https://live.gnome.org/GnomeShell/Development">GNOME Shell</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211385.aspx">Windows 8</a>)</li>
+      <li class="slide">Mobile (<a href="http://phonegap.com/">Phonegap</a>, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS">Firefox OS</a>)</li>
+    </ul>
+  </section>
+
+  <section class="slide" id="iife-1">
+    <h2>IIFEs</h2>
+    <p>
+      <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately-invoked function expressions</a>
+      are a common pattern used to control variable scope and avoid polluting the global namespace.
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" runnable="true" theme="neat">
+// An IIFE
+(function() {
+  // ...
+}());
+
+// Another IIFE
+(function() {
+  // ...
+})();
+
+// Roughly equivalent to
+var myScope = function() {
+  // ...
+};
+myScope();
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="iife-2">
+    <h2>IIFEs</h2>
+    <p>
+      They are also useful for writing modular code and support importing globals via
+      parameters passed during the invocation.
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" runnable="true" theme="neat" globals="window, jQuery">
+// Leading semicolon protects from potential issues when concatenating files
+;(function(ctx, $, undefined) {
+  // Create globals (only if necessary!)
+  ctx._myGlobalFlag = true;
+
+  // Alias outside variables (also useful for minification)
+  $('body').hide().fadeIn();
+
+  // Compare stuff to undefined (not very common)
+  console.log(ctx._somethingUndefined === undefined);
+}(window || global, jQuery));
+      </textarea>
+    </div>
+  </section>
+
   <section class="slide" id="strict-1">
-    <h2>Improving Our JavaScript</h2>
-    <h3>Strict Mode</h3>
-    <textarea class="code" mode="javascript" runnable="true" theme="neat" style="display: none;">
+    <h2>Strict Mode</h2>
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">Strict mode</a>
+      enables a stricter variant of JavaScript that prevents unsafe statements and common mistakes from being made.
+    </p>
+    <div class="code-wrapper">
+      <label for="code-strict-1-1">Without strict mode:</label>
+      <textarea class="code" id="code-strict-1-1" mode="javascript" runnable="true" theme="neat">
 ;(function() {
   var declared;
   declared = 1;
   undeclared = 2;
   console.log(undeclared === window.undeclared);
 }());
-    </textarea>
-
-    <textarea class="code" mode="javascript" runnable="true" theme="neat" style="display: none;">
+      </textarea>
+    </div>
+    <div class="code-wrapper">
+      <label for="code-strict-1-2">With strict mode (open your browser's console!):</label>
+      <textarea class="code" id="code-strict-1-2" mode="javascript" runnable="true" theme="neat">
 ;(function() {
   'use strict';
   var declared;
@@ -59,12 +137,15 @@
   undeclared = 2;
   console.log(undeclared === window.undeclared);
 }());
-    </textarea>
+      </textarea>
+    </div>
   </section>
+
   <section class="slide" id="strict-2">
-    <h2>Improving Our JavaScript</h2>
-    <h3>Strict Mode</h3>
-    <textarea class="code" mode="javascript" runnable="true" theme="neat" style="display: none;">
+    <h2>Strict Mode</h2>
+    <div class="code-wrapper">
+      <label for="code-strict-2-1">Without strict mode:</label>
+      <textarea class="code" id="code-strict-2-1" mode="javascript" runnable="true" theme="neat">
 ;(function() {
   var person = {
     firstName: 'Pedro',
@@ -73,9 +154,12 @@
   };
   console.log(person);
 }());
-    </textarea>
+      </textarea>
+    </div>
 
-    <textarea class="code" mode="javascript" runnable="true" theme="neat" style="display: none;">
+    <div class="code-wrapper">
+      <label for="code-strict-2-2">With strict mode (open your browser's console!):</label>
+      <textarea class="code" id="code-strict-2-2" mode="javascript" runnable="true" theme="neat">
 ;(function() {
   'use strict';
   var person = {
@@ -85,9 +169,50 @@
   };
   console.log(person);
 }());
-    </textarea>
+      </textarea>
+    </div>
   </section>
 
+  <section class="slide" id="strict-3">
+    <h2>Strict Mode</h2>
+    <div class="code-wrapper">
+      <label for="code-strict-3-1">These all throw exceptions on strict mode:</label>
+      <textarea class="code" id="code-strict-3-1" mode="javascript" runnable="true" theme="neat">
+;(function() {
+  'use strict';
+
+  // SyntaxError: Variable name may not be eval or arguments in strict mode
+  var arguments = ['random', 'stuff'];
+  var eval = function() { return 'lol' };
+
+  // SyntaxError: Delete of an unqualified identifier in strict mode
+  var count = 10;
+  delete count;
+
+  // SyntaxError: Strict mode function may not have duplicate parameter names
+  var getFullName = function(firstName, lastName, firstName) {};
+
+  // TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed
+  // on strict mode functions or the arguments objects for calls to them
+  (function() { arguments.callee() }());
+
+  // SyntaxError: Strict mode code may not include a with statement
+  var obj = {a: 'a', b: 'b'};
+  with (obj) { console.log(b); }
+}());
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="prototypal-1">
+    <h2>Prototypal Inheritance</h2>
+    <p>
+      JavaScript is an object-oriented language that uses
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">prototypal</a>
+      <a href="http://h30499.www3.hp.com/t5/HP-Software-Developers-Blog/JavaScript-Inheritance-Revisited/ba-p/6082285">inheritance</a>.
+      It does support a form of "classical" inheritance through
+    </p>
+  </section>
 
   <!-- deck.navigation snippet -->
   <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>

@@ -1,17 +1,17 @@
-@import '../bower_components/deck.js/core/deck.core.css';
+@import "../bower_components/deck.js/core/deck.core.css";
 
-@import '../bower_components/deck.js/extensions/goto/deck.goto.css';
-@import '../bower_components/deck.js/extensions/hash/deck.hash.css';
-@import '../bower_components/deck.js/extensions/menu/deck.menu.css';
-@import '../bower_components/deck.js/extensions/goto/deck.goto.css';
-@import '../bower_components/deck.js/extensions/status/deck.status.css';
-@import '../bower_components/deck.js/extensions/navigation/deck.navigation.css';
-@import '../bower_components/deck.js/extensions/scale/deck.scale.css';
-@import '../scripts/vendor/deck.js-codemirror/codemirror.css';
-@import '../scripts/vendor/deck.js-codemirror/deck.codemirror.css';
+@import "../bower_components/deck.js/extensions/goto/deck.goto.css";
+@import "../bower_components/deck.js/extensions/hash/deck.hash.css";
+@import "../bower_components/deck.js/extensions/menu/deck.menu.css";
+@import "../bower_components/deck.js/extensions/goto/deck.goto.css";
+@import "../bower_components/deck.js/extensions/status/deck.status.css";
+@import "../bower_components/deck.js/extensions/navigation/deck.navigation.css";
+@import "../bower_components/deck.js/extensions/scale/deck.scale.css";
+@import "../scripts/vendor/deck.js-codemirror/codemirror.css";
+@import "../scripts/vendor/deck.js-codemirror/deck.codemirror.css";
 
-@import '../bower_components/deck.js/themes/style/swiss.css';
-@import '../bower_components/deck.js/themes/transition/fade.css';
-@import '../scripts/vendor/deck.js-codemirror/themes/neat.css';
+@import "../bower_components/deck.js/themes/style/swiss.css";
+@import "../bower_components/deck.js/themes/transition/fade.css";
+@import "../scripts/vendor/deck.js-codemirror/themes/neat.css";
 
-@import 'custom.css';
+@import "custom.css";
