@@ -19,6 +19,5 @@ Session.vim
 node_modules
 
 # yeoman generator-webapp files
-dist
 .tmp
 app/bower_components
