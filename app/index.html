@@ -60,6 +60,215 @@
     </ul>
   </section>
 
+  <section class="slide" id="style-1">
+    <h2>Coding Style Guide</h2>
+    <blockquote>
+      <p>
+        Consistent code, even when written by a team, should look like one person wrote it.
+      </p>
+      <p><cite>
+        <a href="http://addyosmani.com/blog/javascript-style-guides-and-beautifiers/">Addy Osmani</a>
+      </cite></p>
+    </blockquote>
+  </section>
+
+  <section class="slide" id="style-2">
+    <h2>Coding Style Guide</h2>
+    <p>
+      Based on <a href="https://github.com/rwldrn/idiomatic.js/#readme">idiomatic.js</a>
+      but with less whitespace inside parenthesis.
+    </p>
+    <ul>
+      <li class="slide"><strong>Always</strong> use <strong>2 spaces</strong> for indentation (no tabs).</li>
+      <li class="slide">Never leave trailing whitespace.</li>
+      <li class="slide">Leave one blank line at the end of the file.</li>
+      <li class="slide">Keep lines under 80 characters long.</li>
+      <li class="slide"><strong>Never</strong> mix quotation marks in a project. Prefer single quotes, but <strong>be consistent</strong>.</li>
+      <li class="slide">Prefer <kbd>===</kbd> over <kbd>==</kbd> for comparisons (<kbd>===</kbd> does not coerce types).</li>
+      <li class="slide">Don't rely on automatic semicolon insertion. Use semicolons after every simple statement and don't put more than one statement per line.</li>
+    </ul>
+  </section>
+
+  <section class="slide" id="style-3">
+    <h2>Coding Style Guide</h2>
+    <div class="code-wrapper">
+      <label>DON'T:</label>
+      <textarea class="code" mode="javascript" theme="cobalt">
+if(condition) doSomething();
+else doSomethingElse();
+
+while(condition) iterating++;
+
+for(var i=0;i&lt;100;i++) someIterativeFn();
+      </textarea>
+    </div>
+
+    <div class="code-wrapper">
+      <label>DO:</label>
+      <textarea class="code" mode="javascript" theme="neat">
+if (condition) {
+  doSomething();
+} else {
+  doSomethingElse();
+}
+
+while (condition) {
+  iterating++;
+}
+
+var i;
+for (i = 0; i &lt; 100; i++) {
+  someIterativeFn();
+}
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-4">
+    <h2>Coding Style Guide</h2>
+    <div class="code-wrapper">
+      <label>DON'T:</label>
+      <textarea class="code" mode="javascript" theme="cobalt">
+function foo() {
+
+  // some statements here
+
+  var bar = '';
+  var qux;
+}
+      </textarea>
+    </div>
+
+    <div class="code-wrapper">
+      <label>DO use only one var statement at the top of the scope (function):</label>
+      <textarea class="code" mode="javascript" theme="neat">
+function foo() {
+  var bar = '',
+    qux;
+
+  // all statements after the variables declarations.
+}
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-5">
+    <h2>Coding Style Guide</h2>
+    <h3>Constructor Functions</h3>
+    <div class="code-wrapper">
+      <label>DON'T:</label>
+      <textarea class="code" mode="javascript" theme="cobalt">
+function fooBar(options) {
+  this.options = options;
+}
+
+var fooBarInstance = new fooBar({ a: 'alpha' });
+
+// **Never** call a constructor without the `new` operator
+// `baz` will be `undefined` and the global namespace will be polluted
+var baz = fooBar({ a: 'alpha' });
+      </textarea>
+    </div>
+
+    <div class="code-wrapper">
+      <label>DO use UpperCamelCase to name constructor functions:</label>
+      <textarea class="code" mode="javascript" theme="neat">
+function FooBar(options) {
+  this.options = options;
+}
+
+var fooBar = new FooBar({ a: 'alpha' });
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-6">
+    <h2>Coding Style Guide</h2>
+    <div class="code-wrapper">
+      <label>Type checking:</label>
+      <textarea class="code" mode="javascript" theme="neat">
+// String
+typeof variable === 'string'
+
+// Number:
+typeof variable === 'number'
+
+// Boolean:
+typeof variable === 'boolean'
+
+// Object:
+typeof variable === 'object'
+
+// Array:
+Array.isArray(arrayLikeObject)
+
+// Node:
+elem.nodeType === 1
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-7">
+    <h2>Coding Style Guide</h2>
+    <div class="code-wrapper">
+      <label>Type checking:</label>
+      <textarea class="code" mode="javascript" theme="neat">
+// null:
+variable === null
+
+// null or undefined:
+variable == null
+
+// undefined (Global Variables):
+typeof variable === 'undefined'
+
+// undefined (Local Variables):
+variable === undefined
+
+//Properties:
+object.prop === undefined
+object.hasOwnProperty( prop )
+'prop' in object
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-8">
+    <h2>Coding Style Guide</h2>
+    <h3>Naming</h3>
+    <p>
+      Always use meaningful names. An exception are commonly used names as conventions
+      (<kbd>i</kbd> with <kbd>for</kbd> loops, <kbd>e</kbd> for events in handlers, <kbd>err</kbd> for errors in <kbd>try/catch</kbd>)
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" theme="neat">
+// camelCase for functions, variables and methods
+functionNamesLikeThis;
+variableNamesLikeThis;
+methodNamesLikeThis;
+
+// UpperCamelCase for constructor functions
+ConstructorNamesLikeThis;
+
+// SCREAMING_SNAKE_CASE for variables used as constants
+SYMBOLIC_CONSTANTS_LIKE_THIS;
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="style-9">
+    <h2>Coding Style Guide</h2>
+    <h3>Comments</h3>
+    <ul>
+      <li class="slide">Single line above the code that is subject.</li>
+      <li class="slide">Multiline is good.</li>
+      <li class="slide">End of line comments are prohibited!</li>
+      <li class="slide">JSDoc style is good, but requires a significant time investment.</li>
+      <li class="slide">It is important that comments be kept up-to-date. Erroneous comments can make programs even harder to read and understand.</li>
+      <li class="slide">Make comments meaningful. Focus on what is not immediately visible.</li>
+    </ul>
+  </section>
+
   <section class="slide" id="iife-1">
     <h2>IIFEs</h2>
     <p>

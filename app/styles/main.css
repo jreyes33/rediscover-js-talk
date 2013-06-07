@@ -13,5 +13,6 @@
 @import "../bower_components/deck.js/themes/style/swiss.css";
 @import "../bower_components/deck.js/themes/transition/fade.css";
 @import "../scripts/vendor/deck.js-codemirror/themes/neat.css";
+@import "../scripts/vendor/deck.js-codemirror/themes/cobalt.css";
 
 @import "custom.css";

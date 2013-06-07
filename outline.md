@@ -23,9 +23,12 @@
 - Desktop ([GNOME Shell][gnome-shell], [Windows 8][win8])
 - Mobile ([Phonegap][phonegap], [Firefox OS][firefox-os])
 
-## Coding Style
-- Check idiomatic.js
-- Less whitespace inside parenthesis
+## Coding Style Guide
+Based on [idiomatic.js][idiomatic] but with less whitespace inside parenthesis.
+
+- **Always** use **2 spaces** for indentation (no tabs).
+- Never leave trailing whitespace.
+- Leave one blank line at the end of the file.
 
 ## IIFEs
 [Immediately-invoked function expressions][iife] are a common pattern used to control variable scope and avoid polluting the global namespace.
@@ -60,6 +63,7 @@ JavaScript is an object-oriented language that uses [prototypal][inheritance1] [
 [win8]: http://msdn.microsoft.com/en-us/library/windows/apps/br211385.aspx
 [phonegap]: http://phonegap.com/
 [firefox-os]: https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS
+[idiomatic]: https://github.com/rwldrn/idiomatic.js/#readme
 [iife]: http://benalman.com/news/2010/11/immediately-invoked-function-expression/
 [strict]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
 [inheritance1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
