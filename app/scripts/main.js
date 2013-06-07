@@ -18,7 +18,6 @@ require.config({
       'deck/extensions/hash/deck.hash',
       'deck/extensions/menu/deck.menu',
       'deck/extensions/goto/deck.goto',
-      'deck/extensions/status/deck.status',
       'deck/extensions/navigation/deck.navigation',
       'deck/extensions/scale/deck.scale',
       'deck.codemirror'
@@ -26,19 +25,12 @@ require.config({
     'deck/extensions/hash/deck.hash': ['deck.core'],
     'deck/extensions/menu/deck.menu': ['deck.core'],
     'deck/extensions/goto/deck.goto': ['deck.core'],
-    'deck/extensions/status/deck.status': ['deck.core'],
     'deck/extensions/navigation/deck.navigation': ['deck.core'],
     'deck/extensions/scale/deck.scale': ['deck.core'],
     'deck.js-codemirror/mode/javascript/javascript': ['codemirror'],
-    'deck.js-codemirror/mode/xml/xml': ['codemirror'],
-    'deck.js-codemirror/mode/css/css': ['codemirror'],
-    'deck.js-codemirror/mode/htmlmixed/htmlmixed': ['codemirror'],
     'deck.codemirror': [
       'codemirror',
-      'deck.js-codemirror/mode/javascript/javascript',
-      'deck.js-codemirror/mode/xml/xml',
-      'deck.js-codemirror/mode/css/css',
-      'deck.js-codemirror/mode/htmlmixed/htmlmixed'
+      'deck.js-codemirror/mode/javascript/javascript'
     ]
   }
 });

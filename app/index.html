@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
+  <title>Rediscover JavaScript</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=1024, user-scalable=no">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -19,7 +19,7 @@
 <body class="deck-container">
 
   <section class="slide" id="cover">
-    <h1>Relearning JavaScript</h1>
+    <h1>Rediscover JavaScript</h1>
   </section>
 
   <section class="slide" id="origin">
@@ -264,7 +264,7 @@ SYMBOLIC_CONSTANTS_LIKE_THIS;
       <li class="slide">Multiline is good.</li>
       <li class="slide">End of line comments are prohibited!</li>
       <li class="slide">JSDoc style is good, but requires a significant time investment.</li>
-      <li class="slide">It is important that comments be kept up-to-date. Erroneous comments can make programs even harder to read and understand.</li>
+      <li class="slide">From <a href="http://javascript.crockford.com/code.html">Crockford</a>: It is important that comments be kept up-to-date. Erroneous comments can make programs even harder to read and understand.</li>
       <li class="slide">Make comments meaningful. Focus on what is not immediately visible.</li>
     </ul>
   </section>
@@ -415,24 +415,131 @@ myScope();
 
   <section class="slide" id="prototypal-1">
     <h2>Prototypal Inheritance</h2>
-    <p>
+    <p class="slide">
       JavaScript is an object-oriented language that uses
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">prototypal</a>
       <a href="http://h30499.www3.hp.com/t5/HP-Software-Developers-Blog/JavaScript-Inheritance-Revisited/ba-p/6082285">inheritance</a>.
-      It does support a form of "classical" inheritance through
     </p>
+    <p class="slide">
+      From MDN:
+      <br>
+      "Each object has an internal link to another object called its <strong>prototype</strong>. That prototype object has a prototype of its own, and so on until an object is reached with <kbd>null</kbd> as its prototype. <kbd>null</kbd>, by definition, has no prototype, and acts as the final link in this prototype chain."
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" runnable="true" theme="neat">
+var car = {wheels: 4};
+console.log(Object.getPrototypeOf(car));
+console.log(Object.getPrototypeOf(car) === Object.prototype);
+console.log(Object.getPrototypeOf(Object.prototype));
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="prototypal-2">
+    <h2>Prototypal Inheritance</h2>
+    <p>
+      The <kbd>Object.create</kbd> method can be used to make new objects which
+      prototype is the object passed as the first parameter.
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" runnable="true" theme="neat">
+var car = {wheels: 4};
+var sedan = Object.create(car);
+sedan.color = 'red';
+console.log('sedan.color: ' + sedan.color);
+console.log('sedan.wheels: ' + sedan.wheels);
+console.log('car.color: ' + car.color);
+console.log('car.wheels: ' + car.wheels);
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="prototypal-3">
+    <h2>Prototypal Inheritance</h2>
+    <p>
+      JavaScript also supports a form of "classical" inheritance through
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Using_a_constructor_function">constructor functions</a>.
+    </p>
+    <div class="code-wrapper">
+      <textarea class="code" mode="javascript" runnable="true" theme="neat">
+function Car(wheels, color) {
+  this.wheels = wheels;
+  this.color = color;
+}
+
+Car.prototype.printInfo = function() {
+  console.log('wheels: ' + this.wheels + ', color: ' + this.color);
+};
+
+var car = new Car(4, 'red');
+car.printInfo();
+console.log(Object.getPrototypeOf(car) === Car.prototype);
+console.log(Object.getPrototypeOf(car).constructor);
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="module-1">
+    <h2>The Module Pattern</h2>
+    <ul>
+      <li class="slide">Modules provide a clean way to separate large applications into smaller pieces that interact between them.</li>
+      <li class="slide">They allow us to encapsulate data and functionalities (like private and public properties and methods in "classical" object-oriented language).</li>
+      <li class="slide">You can read more about it <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">here</a>.</li>
+    </ul>
+  </section>
+
+  <section class="slide" id="module-2">
+    <h2>The Module Pattern</h2>
+    <div class="code-wrapper">
+      <label>Example taken from <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">here</a>:</label>
+      <textarea class="code" mode="javascript" runnable="true" theme="neat">
+var testModule = (function () {
+  var counter = 0;
+
+  return {
+    incrementCounter: function () {
+      return counter++;
+    },
+    resetCounter: function () {
+      console.log( "counter value prior to reset: " + counter );
+      counter = 0;
+    }
+  };
+})();
+
+testModule.incrementCounter();
+testModule.resetCounter();
+
+testModule.incrementCounter();
+testModule.incrementCounter();
+testModule.resetCounter();
+      </textarea>
+    </div>
+  </section>
+
+  <section class="slide" id="tools">
+    <h2>Some Libraries &amp; Tools</h2>
+    <ul>
+      <li class="slide">DOM + Ajax (<a href="http://jquery.com/">jQuery</a>)</li>
+      <li class="slide">Utilities (<a href="http://lodash.com/">Lo-Dash</a>)</li>
+      <li class="slide">Module loading (<a href="http://requirejs.org/">RequireJS</a>)</li>
+      <li class="slide">Minifiers (<a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>)</li>
+      <li class="slide">Transpilers (<a href="http://coffeescript.org/">CoffeeScript</a>)</li>
+      <li class="slide">Testing (<a href="http://visionmedia.github.io/mocha/">Mocha</a> + <a href="http://chaijs.com/">Chai.js</a>)</li>
+      <li class="slide">Linting (<a href="http://www.jshint.com/">JSHint</a>)</li>
+      <li class="slide">Code analysis (<a href="https://github.com/jsoverson/plato">plato</a>)</li>
+      <li class="slide">Development workflow (<a href="http://yeoman.io/">Yeoman</a> + <a href="http://gruntjs.com/">Grunt</a> + <a href="http://bower.io/">Bower</a>)</li>
+      <li class="slide">This presentation was made with <a href="http://imakewebthings.com/deck.js/">Deck.js</a> with the <a href="https://github.com/iros/deck.js-codemirror">Codemirror plugin</a> for code samples.</li>
+    </ul>
+  </section>
+
+  <section class="slide" id="thanks">
+    <h1>Thanks!</h1>
   </section>
 
   <!-- deck.navigation snippet -->
   <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
   <a href="#" class="deck-next-link" title="Next">&#8594;</a>
-
-  <!-- deck.status snippet -->
-  <p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-  </p>
 
   <!-- deck.goto snippet -->
   <form action="." method="get" class="goto-form">
@@ -451,7 +558,7 @@ myScope();
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    var _gaq=[['_setAccount','UA-10144665-7'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src='//www.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));

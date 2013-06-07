@@ -39,21 +39,24 @@ Based on [idiomatic.js][idiomatic] but with less whitespace inside parenthesis.
 ## Prototypal Inheritance
 JavaScript is an object-oriented language that uses [prototypal][inheritance1] [inheritance][inheritance2]. It does support a form of "classical" inheritance through [constructor functions][constructors].
 
-## Modularity
+## The Module Pattern
+- Modules provide a nice way to separate large applications into significant and coherent pieces.
+- They allow us to encapsulate functionalities (like private and public properties and methods in "classical" object-oriented language).
+- You can read more about it [here][module-pattern].
 
-## Testing
-### QUnit
-### Jasmine
-### Mocha + Chai.js
+## Some Libraries & Tools
+- DOM + Ajax ([jQuery][jquery])
+- Utilities ([Lo-Dash][lodash])
+- Module loading ([RequireJS][require])
+- Minifiers ([UglifyJS][uglify])
+- Transpilers ([CoffeeScript][coffeescript])
+- Testing ([Mocha][mocha] + [Chai.js][chai])
+- Linting ([JSHint][jshint])
+- Code analysis ([plato][plato])
+- Development workflow ([Yeoman][yeoman] + [Grunt][grunt] + [Bower][bower])
 
-## Tools
-
-- Minifiers
-- Transpilers
-- JSHint
-- Yeoman
-- Grunt
-- Bower
+# Thanks
+This presentation was made with [Deck.js][deck] with the [Codemirror plugin] [deck-codemirror] for code samples.
 
 
 [es5.1]: http://es5.github.io/
@@ -69,3 +72,18 @@ JavaScript is an object-oriented language that uses [prototypal][inheritance1] [
 [inheritance1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
 [inheritance2]: http://h30499.www3.hp.com/t5/HP-Software-Developers-Blog/JavaScript-Inheritance-Revisited/ba-p/6082285
 [constructors]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Using_a_constructor_function
+[module-pattern]: http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript
+[jquery]: http://jquery.com/
+[lodash]: http://lodash.com/
+[require]: http://requirejs.org/
+[uglify]: https://github.com/mishoo/UglifyJS
+[coffeescript]: http://coffeescript.org/
+[mocha]: http://visionmedia.github.io/mocha/
+[chai]: http://chaijs.com/
+[jshint]: http://www.jshint.com/
+[plato]: https://github.com/jsoverson/plato
+[yeoman]: http://yeoman.io/
+[grunt]: http://gruntjs.com/
+[bower]: http://bower.io/
+[deck]: http://imakewebthings.com/deck.js/
+[deck-codemirror]: https://github.com/iros/deck.js-codemirror
